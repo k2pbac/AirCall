@@ -1,0 +1,40 @@
+.call_item {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  border: 0.5px rgba(0, 0, 0, 0.226) solid;
+  border-radius: 15px;
+  padding: 10px;
+  padding-bottom: 15px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.call_item span {
+  margin-right: 10px;
+}
+
+.call_item__details {
+  width: 100%;
+}
+
+.call_item__details p {
+  margin: 0;
+  margin-top: 2px;
+}
+
+.call_item__details p:nth-child(1) {
+  font-weight: bold;
+}
+
+.call_item__details p:nth-child(2) {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 0.8em;
+}
+
+.call_item__time {
+  flex-basis: 50%;
+  display: flex;
+  justify-content: end;
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.4);
+}
