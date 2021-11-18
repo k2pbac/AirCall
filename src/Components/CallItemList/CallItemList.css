@@ -1,0 +1,12 @@
+.CallItemList {
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: absolute;
+  width: 376px;
+  left: 0;
+}
+
+.call_item {
+  padding-left: 20px;
+  padding-right: 20px;
+}
