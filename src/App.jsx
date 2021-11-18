@@ -1,15 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import CallItem from "./Components/CallItem/CallItem.jsx";
-
 import Header from "./Header.jsx";
+import CallItemList from "./Components/CallItemList/CallItemList.jsx";
 
 const App = () => {
+  const { callsData } = require("./Components/CallItemList/CallItemData");
   return (
     <div className="container">
       <Header />
       <div className="container-view">
-        <CallItem />
+        <CallItemList callItemsData={callsData} />
       </div>
     </div>
   );

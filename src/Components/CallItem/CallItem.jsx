@@ -4,27 +4,44 @@ import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import "./CallItem.css";
 import outboundCall from "./outbound.png";
 import inboundCall from "./inbound.png";
-const CallItem = () => {
+import { format } from "date-fns";
+import { enCALocale } from "date-fns/locale/en-CA";
+
+const CallItem = (props) => {
+  const { id, created_at, direction, from, to, via, duration, call_type } =
+    props;
+
+  const realDate = new Date(created_at);
+  const callDate = format(realDate, "MMMM, dd yyyy", {
+    locale: enCALocale,
+  });
+  const callTime = format(realDate, "hh:mm", {
+    locale: enCALocale,
+  });
+
   return (
-    <div className="call_item">
+    <div className="call_item" id={id}>
       <div className="call_item__date">
-        <span>JULY, 21 2017</span>
+        <span>{callDate}</span>
       </div>
       <div className="call_item__information">
-        <img className="call_item__icon-outbound" src={outboundCall} />
+        <img
+          className="call_item__icon-outbound"
+          src={direction === "outbound" ? outboundCall : inboundCall}
+        />
         <div className="call_item__details">
           <span>
-            <p>+33 6 45 13 53 91</p>
+            <p>{from}</p>
             <p>
               <span className="call_item_light-span">tried to call on</span>{" "}
-              Xavier
+              {to === null ? "Private Number" : to}
             </p>
           </span>
         </div>
         <div className="call_item__time">
           <p>
             <FontAwesomeIcon size="1x" icon={faEllipsisV} />
-            07:58 <span>PM</span>
+            {callTime} <span>{realDate.getHours() > 12 ? "PM" : "AM"}</span>
           </p>
         </div>
       </div>
