@@ -1,0 +1,108 @@
+.call_item__information {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  border: 0.5px rgba(0, 0, 0, 0.226) solid;
+  border-radius: 15px;
+  padding: 10px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  padding-right: 0px;
+  font-family: "Montserrat", sans-serif;
+  position: relative;
+  font-weight: 600;
+}
+
+.call_item_light-span {
+  font-weight: 300;
+}
+
+.call_item .call_item_icon-type {
+  margin-right: 10px;
+}
+
+.call_item__details {
+  width: 100%;
+}
+
+.call_item__details p {
+  margin: 0;
+  margin-top: 2px;
+}
+
+.call_item__details p:nth-child(1) {
+  font-weight: bold;
+}
+
+.call_item__details p:nth-child(2) {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 0.8em;
+}
+
+.call_item__time {
+  flex-basis: 50%;
+  display: flex;
+  justify-content: end;
+  font-size: 0.7rem;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.call_item__time span {
+  padding: 2px;
+  border: 0.1px rgba(0, 0, 0, 0.226) solid;
+  border-right: 0px;
+  border-radius: 2px;
+}
+
+.call_item__time svg {
+  margin-right: 10px;
+}
+
+.call_item__time p span {
+  padding-right: 5px;
+  padding-left: 3px;
+  font-weight: bold;
+}
+
+.call_item__icon-outbound {
+  height: 27px;
+  width: 25px;
+  margin-right: 10px;
+}
+
+.call_item__date {
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+.call_item__date::before,
+.call_item__date::after {
+  border-bottom: 0.1px rgba(0, 0, 0, 0.226) dotted;
+  content: "";
+  display: inline-block;
+  height: 5px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+.call_item__date::before {
+  left: calc(50% + 25px);
+}
+
+.call_item__date::after {
+  right: calc(50% + 25px);
+}
+
+.call_item__date span {
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.226);
+  font-weight: bold;
+  display: inline-block;
+  font-size: 0.5em;
+}
