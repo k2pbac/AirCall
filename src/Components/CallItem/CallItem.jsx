@@ -15,7 +15,10 @@ const CallItem = () => {
         <div className="call_item__details">
           <span>
             <p>+33 6 45 13 53 91</p>
-            <p>tried to call on Xavier</p>
+            <p>
+              <span className="call_item_light-span">tried to call on</span>{" "}
+              Xavier
+            </p>
           </span>
         </div>
         <div className="call_item__time">
