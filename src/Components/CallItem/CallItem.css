@@ -3,7 +3,14 @@
   margin-bottom: 10px;
 }
 
-.call_item_light-span {
+.call_item a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+}
+
+.call_item:o .call_item_light-span {
   font-weight: 300;
 }
 

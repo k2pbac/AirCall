@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import CallItem from "../CallItem/CallItem.jsx";
 import "./CallItemList.css";
+import useHttp from "../../hooks/useHttp";
 
-const CallItemList = ({ callItemsData }) => {
-  const [callData, setCallData] = useState(callItemsData);
+const CallItemList = ({ callItemsData, setActiveTab }) => {
+  const [callData, setCallData] = useState({});
+  const { isLoading, error, sendRequest } = useHttp();
+
+  useEffect(() => {
+    const data = sendRequest({
+      url: "https://aircall-job.herokuapp.com/activities",
+      method: "GET",
+    });
+    setCallData(data);
+  }, []);
+
   const removedCallData = [];
   const countedSameCalls = callData.reduce((filtered, call) => {
     if (filtered[call.to + " " + call.from + " " + call.created_at]) {

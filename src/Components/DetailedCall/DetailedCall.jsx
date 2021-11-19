@@ -19,7 +19,7 @@ const DetailedCall = (props) => {
   const { direction } = props;
   return (
     <div className="detailed_call">
-      <img className="detailed_call__image" src={imageIcon} />
+      <img className="detailed_call__image" src={`/${imageIcon}`} />
       <p>+33 6 34 45 74 34</p>
       <div className="detailed_call__icons">
         <FontAwesomeIcon
@@ -43,7 +43,7 @@ const DetailedCall = (props) => {
         <Container>
           <img
             className="call_item__icon-outbound"
-            src={outboundCall}
+            src={`/${outboundCall}`}
             // src={direction === "outbound" ? outboundCall : inboundCall}
           />
           <div className="detail_call__info">
@@ -55,7 +55,7 @@ const DetailedCall = (props) => {
         <Container>
           <img
             className="call_item__icon-outbound"
-            src={outboundCall}
+            src={`/${inboundCall}`}
             // src={direction === "outbound" ? outboundCall : inboundCall}
           />
           <div className="detail_call__info">

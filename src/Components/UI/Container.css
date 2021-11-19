@@ -13,3 +13,8 @@
   position: relative;
   font-weight: 600;
 }
+
+.call_item__container:hover {
+  background-color: aliceblue;
+  cursor: pointer;
+}

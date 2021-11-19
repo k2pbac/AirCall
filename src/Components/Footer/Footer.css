@@ -43,6 +43,7 @@
 
 .footer__icon-wrapper:hover {
   background-color: rgba(173, 216, 230, 0.103);
+  cursor: pointer;
 }
 
 .hvr-grow {

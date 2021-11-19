@@ -4,7 +4,7 @@ import "./Container.css";
 
 const Container = (props) => {
   return (
-    <div id={props.id} className="call_item__container">
+    <div id={props.id} onClick={props.onClick} className="call_item__container">
       {props.children}
     </div>
   );

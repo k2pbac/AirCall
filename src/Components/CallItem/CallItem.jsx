@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import "./CallItem.css";
@@ -34,38 +36,40 @@ const CallItem = (props) => {
   return (
     <div className="call_item" id={id}>
       <DateHeader date={callDate}></DateHeader>
-      <Container>
-        <img
-          className="call_item__icon-outbound"
-          src={direction === "outbound" ? outboundCall : inboundCall}
-        />
-        <div className="call_item__details">
-          <span>
-            <div style={{ display: "flex" }}>
-              <p style={{ marginRight: "4px" }}> {from} </p>
-              <div
-                className={`${
-                  count <= 1 && "call_item__badge-display"
-                } call_item__badge`}
-              >
-                <span className="call_item__count">
-                  {count > 1 ? count : ""}
-                </span>
+      <Link to={`call/${id}`}>
+        <Container>
+          <img
+            className="call_item__icon-outbound"
+            src={direction === "outbound" ? outboundCall : inboundCall}
+          />
+          <div className="call_item__details">
+            <span>
+              <div style={{ display: "flex" }}>
+                <p style={{ marginRight: "4px" }}> {from} </p>
+                <div
+                  className={`${
+                    count <= 1 && "call_item__badge-display"
+                  } call_item__badge`}
+                >
+                  <span className="call_item__count">
+                    {count > 1 ? count : ""}
+                  </span>
+                </div>
               </div>
-            </div>
+              <p>
+                <span className="call_item_light-span">tried to call on</span>{" "}
+                {to === null ? "Private Number" : to}
+              </p>
+            </span>
+          </div>
+          <div className="call_item__time">
             <p>
-              <span className="call_item_light-span">tried to call on</span>{" "}
-              {to === null ? "Private Number" : to}
+              <FontAwesomeIcon size="1x" icon={faEllipsisV} />
+              {callTime} <span>{realDate.getHours() > 12 ? "PM" : "AM"}</span>
             </p>
-          </span>
-        </div>
-        <div className="call_item__time">
-          <p>
-            <FontAwesomeIcon size="1x" icon={faEllipsisV} />
-            {callTime} <span>{realDate.getHours() > 12 ? "PM" : "AM"}</span>
-          </p>
-        </div>
-      </Container>
+          </div>
+        </Container>
+      </Link>
     </div>
   );
 };
