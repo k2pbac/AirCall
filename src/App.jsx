@@ -5,6 +5,7 @@ import Header from "./Components/Header.jsx";
 import CallItemList from "./Components/CallItemList/CallItemList.jsx";
 import Footer from "./Components/Footer/Footer.jsx";
 import DetailedCall from "./Components/DetailedCall/DetailedCall.jsx";
+import Error from "./Components/Error/Error.jsx";
 
 const App = () => {
   const { callsData } = require("./Components/CallItemList/CallItemData");
@@ -27,8 +28,11 @@ const App = () => {
               );
             }}
           />
-          <Route path="/call" component={DetailedCall} />
-          <Route component={Footer} />
+          <Route
+            path="/call/:id"
+            render={(props) => <DetailedCall {...props}></DetailedCall>}
+          />
+          <Route component={Error} />
         </Switch>
       </div>
       <Footer setActiveTab={setActiveTab} activeTab={activeTab}></Footer>

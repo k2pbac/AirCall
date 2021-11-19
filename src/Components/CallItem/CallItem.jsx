@@ -9,21 +9,11 @@ import inboundCall from "../../../public/images/inbound.png";
 import { format } from "date-fns";
 import { enCALocale } from "date-fns/locale/en-CA";
 
-import Container from "../UI/Container.jsx";
-import DateHeader from "../UI/DateHeader.jsx";
+import Container from "../UI/Container/Container.jsx";
+import DateHeader from "../UI/DateHeader/DateHeader.jsx";
 
 const CallItem = (props) => {
-  const {
-    id,
-    created_at,
-    direction,
-    from,
-    to,
-    via,
-    duration,
-    call_type,
-    count,
-  } = props;
+  const { id, created_at, direction, from, to, count } = props;
 
   const realDate = new Date(created_at);
   const callDate = format(realDate, "MMMM, dd yyyy", {
@@ -36,7 +26,7 @@ const CallItem = (props) => {
   return (
     <div className="call_item" id={id}>
       <DateHeader date={callDate}></DateHeader>
-      <Link to={`call/${id}`}>
+      <Link to={`/call/${id}`}>
         <Container>
           <img
             className="call_item__icon-outbound"
