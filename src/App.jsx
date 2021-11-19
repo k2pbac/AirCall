@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Header from "./Header.jsx";
+import Header from "./Components/Header.jsx";
 import CallItemList from "./Components/CallItemList/CallItemList.jsx";
+import Footer from "./Components/Footer/Footer.jsx";
 
 const App = () => {
   const { callsData } = require("./Components/CallItemList/CallItemData");
@@ -11,6 +12,7 @@ const App = () => {
       <div className="container-view">
         <CallItemList callItemsData={callsData} />
       </div>
+      <Footer></Footer>
     </div>
   );
 };

@@ -20,7 +20,6 @@ const CallItem = (props) => {
     count,
   } = props;
 
-  console.log(count);
   const realDate = new Date(created_at);
   const callDate = format(realDate, "MMMM, dd yyyy", {
     locale: enCALocale,

@@ -10,3 +10,7 @@
   padding-left: 20px;
   padding-right: 20px;
 }
+
+.call_item:last-child {
+  margin-bottom: 25px;
+}
