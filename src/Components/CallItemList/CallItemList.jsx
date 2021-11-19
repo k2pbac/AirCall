@@ -1,65 +1,62 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import CallItem from "../CallItem/CallItem.jsx";
 import "./CallItemList.css";
+import useHttp from "../../hooks/useHttp";
+import Loader from "../UI/Loader/Loader.jsx";
 
-const CallItemList = ({ callItemsData }) => {
-  const [callData, setCallData] = useState(callItemsData);
-  const removedCallData = [];
-  const countedSameCalls = callData.reduce((filtered, call) => {
-    if (filtered[call.to + " " + call.from + " " + call.created_at]) {
-      filtered[call.to + " " + call.from + " " + call.created_at]["count"]++;
-    } else {
-      filtered[call.to + " " + call.from + " " + call.created_at] = {
-        call,
-        count: 1,
-      };
-    }
-    return filtered;
-  }, {});
+const CallItemList = ({ callItemsData, setActiveTab }) => {
+  const [callData, setCallData] = useState({});
+  const { isLoading, error, sendRequest } = useHttp();
 
-  const displayCallData = Object.keys(countedSameCalls).reduce(
-    (filtered, key) => {
-      if (!countedSameCalls[key].call.is_archived) {
+  const countedSameCalls = (res) => {
+    const newData = res.data.reduce((filtered, call) => {
+      if (filtered[call.to + " " + call.from + " " + call.created_at]) {
+        filtered[call.to + " " + call.from + " " + call.created_at]["count"]++;
+      } else {
+        filtered[call.to + " " + call.from + " " + call.created_at] = {
+          call,
+          count: 1,
+        };
+      }
+      return filtered;
+    }, {});
+    const displayCallData = Object.keys(newData).reduce((filtered, key) => {
+      if (!newData[key].call.is_archived) {
         filtered.push(
           <CallItem
-            id={countedSameCalls[key].call.id}
-            key={countedSameCalls[key].call.id}
-            created_at={countedSameCalls[key].call.created_at}
-            direction={countedSameCalls[key].call.direction}
-            from={countedSameCalls[key].call.from}
-            to={countedSameCalls[key].call.to}
-            via={countedSameCalls[key].call.via}
-            duration={countedSameCalls[key].call.duration}
-            call_type={countedSameCalls[key].call.call_type}
-            count={countedSameCalls[key].count}
+            id={newData[key].call.id}
+            key={newData[key].call.id}
+            created_at={newData[key].call.created_at}
+            direction={newData[key].call.direction}
+            from={newData[key].call.from}
+            to={newData[key].call.to}
+            via={newData[key].call.via}
+            duration={newData[key].call.duration}
+            call_type={newData[key].call.call_type}
+            count={newData[key].count}
           />
         );
       }
       return filtered;
-    },
-    []
-  );
+    }, []);
+    setCallData(displayCallData);
+  };
+  useEffect(() => {
+    sendRequest(
+      {
+        url: "https://aircall-job.herokuapp.com/activities",
+        method: "GET",
+      },
+      countedSameCalls
+    );
+  }, []);
 
-  // const displayCallData = callData.reduce(function (filtered, call) {
-  //   if (!call.is_archived) {
-  //     filtered.push(
-  //       <CallItem
-  //         id={call.id}
-  //         key={call.id}
-  //         created_at={call.created_at}
-  //         direction={call.direction}
-  //         from={call.from}
-  //         to={call.to}
-  //         via={call.via}
-  //         duration={call.duration}
-  //         call_type={call.call_type}
-  //       />
-  //     );
-  //   }
-  //   return filtered;
-  // }, []);
-  return <div className="CallItemList">{displayCallData}</div>;
+  return (
+    (!isLoading && !error && Object.keys(callData).length && (
+      <div className="CallItemList">{callData}</div>
+    )) || <Loader></Loader>
+  );
 };
 
 export default CallItemList;

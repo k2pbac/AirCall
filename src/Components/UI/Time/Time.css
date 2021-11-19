@@ -1,0 +1,24 @@
+.time {
+  flex-basis: 50%;
+  display: flex;
+  justify-content: end;
+  font-size: 0.5rem;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.time span {
+  padding: 2px;
+  border: 0.1px rgba(0, 0, 0, 0.226) solid;
+  border-right: 0px;
+  border-radius: 2px;
+}
+
+.time svg {
+  margin-right: 10px;
+}
+
+.time p span {
+  padding-right: 4px;
+  padding-left: 3px;
+  font-weight: bold;
+}
