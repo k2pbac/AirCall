@@ -8,9 +8,19 @@ import { format } from "date-fns";
 import { enCALocale } from "date-fns/locale/en-CA";
 
 const CallItem = (props) => {
-  const { id, created_at, direction, from, to, via, duration, call_type } =
-    props;
+  const {
+    id,
+    created_at,
+    direction,
+    from,
+    to,
+    via,
+    duration,
+    call_type,
+    count,
+  } = props;
 
+  console.log(count);
   const realDate = new Date(created_at);
   const callDate = format(realDate, "MMMM, dd yyyy", {
     locale: enCALocale,
@@ -31,7 +41,18 @@ const CallItem = (props) => {
         />
         <div className="call_item__details">
           <span>
-            <p>{from}</p>
+            <div style={{ display: "flex" }}>
+              <p style={{ marginRight: "4px" }}> {from} </p>
+              <div
+                className={`${
+                  count <= 1 && "call_item__badge-display"
+                } call_item__badge`}
+              >
+                <span className="call_item__count">
+                  {count > 1 ? count : ""}
+                </span>
+              </div>
+            </div>
             <p>
               <span className="call_item_light-span">tried to call on</span>{" "}
               {to === null ? "Private Number" : to}
