@@ -88,13 +88,3 @@ module.exports.callsData = [
     call_type: "answered",
   },
 ];
-
-// - **id** - unique ID of call
-// - **created_at** - creation date
-// - **direction** - `inbound` or `outbound` call
-// - **from** - caller's number
-// - **to** - callee's number
-// - **via** - Aircall number used for the call
-// - **duration** - duration of a call (in seconds)
-// - **is_archived** - call is archived or not
-// - **call_type** - can be a `missed`, `answered` or `voicemail` call.

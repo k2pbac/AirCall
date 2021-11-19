@@ -111,3 +111,23 @@
   display: inline-block;
   font-size: 0.5em;
 }
+
+.call_item__badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.call_item__badge-display {
+  display: none;
+}
+
+.call_item__count {
+  display: inline-block;
+  padding: 2px 4.2px;
+  border-radius: 50%;
+  font-size: 0.4rem;
+  text-align: center;
+  background: rgb(243, 27, 27);
+  color: #fefefe;
+}
