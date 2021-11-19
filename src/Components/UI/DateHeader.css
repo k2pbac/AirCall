@@ -1,0 +1,37 @@
+.date_header {
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-left: -20px;
+  margin-right: -20px;
+  letter-spacing: 0.4px;
+}
+
+.date_header::before,
+.date_header::after {
+  border-bottom: 0.1px rgba(0, 0, 0, 0.226) dotted;
+  content: "";
+  display: inline-block;
+  height: 5px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+.date_header::before {
+  left: calc(50% + 35px);
+}
+
+.date_header::after {
+  right: calc(50% + 35px);
+}
+
+.date_header span {
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.438);
+  font-weight: bold;
+  display: inline-block;
+  font-size: 0.75em;
+}

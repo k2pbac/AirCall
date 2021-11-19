@@ -2,10 +2,13 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import "./CallItem.css";
-import outboundCall from "./outbound.png";
-import inboundCall from "./inbound.png";
+import outboundCall from "../../../public/images/outbound.png";
+import inboundCall from "../../../public/images/inbound.png";
 import { format } from "date-fns";
 import { enCALocale } from "date-fns/locale/en-CA";
+
+import Container from "../UI/Container.jsx";
+import DateHeader from "../UI/DateHeader.jsx";
 
 const CallItem = (props) => {
   const {
@@ -30,10 +33,8 @@ const CallItem = (props) => {
 
   return (
     <div className="call_item" id={id}>
-      <div className="call_item__date">
-        <span>{callDate.toUpperCase()}</span>
-      </div>
-      <div className="call_item__information">
+      <DateHeader date={callDate}></DateHeader>
+      <Container>
         <img
           className="call_item__icon-outbound"
           src={direction === "outbound" ? outboundCall : inboundCall}
@@ -64,7 +65,7 @@ const CallItem = (props) => {
             {callTime} <span>{realDate.getHours() > 12 ? "PM" : "AM"}</span>
           </p>
         </div>
-      </div>
+      </Container>
     </div>
   );
 };

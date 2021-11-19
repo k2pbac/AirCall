@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhoneAlt, faUser, faCog } from "@fortawesome/free-solid-svg-icons";
-import numPadIcon from "./num-pad_icon.png";
-import recordIcon from "./record_icon.png";
+import numPadIcon from "../../../public/images/num-pad_icon.png";
+import recordIcon from "../../../public/images/record_icon.png";
 import "./Footer.css";
 
 const Footer = (props) => {
