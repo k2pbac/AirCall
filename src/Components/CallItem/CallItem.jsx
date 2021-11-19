@@ -32,7 +32,7 @@ const CallItem = (props) => {
   return (
     <div className="call_item" id={id}>
       <div className="call_item__date">
-        <span>{callDate}</span>
+        <span>{callDate.toUpperCase()}</span>
       </div>
       <div className="call_item__information">
         <img

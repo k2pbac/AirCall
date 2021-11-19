@@ -82,6 +82,7 @@
   margin-bottom: 10px;
   margin-left: -20px;
   margin-right: -20px;
+  letter-spacing: 0.4px;
 }
 
 .call_item__date::before,
@@ -97,11 +98,11 @@
 }
 
 .call_item__date::before {
-  left: calc(50% + 25px);
+  left: calc(50% + 35px);
 }
 
 .call_item__date::after {
-  right: calc(50% + 25px);
+  right: calc(50% + 35px);
 }
 
 .call_item__date span {
