@@ -11,6 +11,7 @@
 .detail_call__info {
   display: flex;
   flex-direction: column;
+  flex-basis: 50%;
 }
 
 .detailed_call__icons {
@@ -31,4 +32,9 @@
 .detailed_call__image {
   height: 125px;
   width: 125px;
+}
+
+.detailed_call .call_item__container:hover {
+  background-color: white;
+  cursor: auto;
 }

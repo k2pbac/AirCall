@@ -15,6 +15,8 @@ import inboundCall from "../../../public/images/inbound.png";
 import Container from "../UI/Container/Container.jsx";
 import DateHeader from "../UI/DateHeader/DateHeader.jsx";
 import Loader from "../UI/Loader/Loader.jsx";
+import Time from "../UI/Time/Time.jsx";
+
 import { format } from "date-fns";
 import { enCALocale } from "date-fns/locale/en-CA";
 import useHttp from "../../hooks/useHttp";
@@ -24,6 +26,7 @@ const DetailedCall = (props) => {
   const { error, isLoading, sendRequest } = useHttp();
   const [call, setCall] = useState({});
   const [dateTime, setDateTime] = useState({
+    realDate: null,
     callDate: null,
     callTime: null,
   });
@@ -32,6 +35,7 @@ const DetailedCall = (props) => {
     if (Object.keys(call).length) {
       const realDate = new Date(call.created_at);
       setDateTime({
+        realDate: realDate,
         callDate: format(realDate, "MMMM, dd yyyy", {
           locale: enCALocale,
         }),
@@ -57,7 +61,7 @@ const DetailedCall = (props) => {
     (!isLoading && !error && Object.keys(call).length && (
       <div className="detailed_call">
         <img className="detailed_call__image" src={`/${imageIcon}`} />
-        <p>{call.to}</p>
+        <p>{call.to || "Private Number"}</p>
         <div className="detailed_call__icons">
           <FontAwesomeIcon
             size="2x"
@@ -87,13 +91,15 @@ const DetailedCall = (props) => {
               }
             />
             <div className="detail_call__info">
-              <span style={{ marginBottom: "2px" }}>{dateTime.callTime}</span>
+              <span style={{ marginBottom: "2px" }}>{call.via}</span>
+              {/* <span style={{ marginBottom: "2px" }}>{dateTime.callTime}</span> */}
               <span>
                 <span style={{ color: "grey" }}>
                   {call.duration} mins 0 secs
                 </span>
               </span>
             </div>
+            <Time time={dateTime.callTime} date={dateTime.realDate}></Time>
           </Container>
         </div>
       </div>

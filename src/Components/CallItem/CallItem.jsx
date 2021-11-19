@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import "./CallItem.css";
 import outboundCall from "../../../public/images/outbound.png";
 import inboundCall from "../../../public/images/inbound.png";
@@ -11,6 +9,7 @@ import { enCALocale } from "date-fns/locale/en-CA";
 
 import Container from "../UI/Container/Container.jsx";
 import DateHeader from "../UI/DateHeader/DateHeader.jsx";
+import Time from "../UI/Time/Time.jsx";
 
 const CallItem = (props) => {
   const { id, created_at, direction, from, to, count } = props;
@@ -52,12 +51,7 @@ const CallItem = (props) => {
               </p>
             </span>
           </div>
-          <div className="call_item__time">
-            <p>
-              <FontAwesomeIcon size="1x" icon={faEllipsisV} />
-              {callTime} <span>{realDate.getHours() > 12 ? "PM" : "AM"}</span>
-            </p>
-          </div>
+          <Time time={callTime} date={realDate}></Time>
         </Container>
       </Link>
     </div>
