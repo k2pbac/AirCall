@@ -62,7 +62,7 @@ module.exports.callsData = [
     to: "Olivier Pailhes",
     via: "Spain Hotline",
     duration: "300",
-    is_archived: true,
+    is_archived: false,
     call_type: "answered",
   },
   {
@@ -73,7 +73,7 @@ module.exports.callsData = [
     to: "Olivier Pailhes",
     via: "Spain Hotline",
     duration: "300",
-    is_archived: true,
+    is_archived: false,
     call_type: "answered",
   },
   {
@@ -84,7 +84,7 @@ module.exports.callsData = [
     to: "Olivier Pailhes",
     via: "Spain Hotline",
     duration: "300",
-    is_archived: true,
+    is_archived: false,
     call_type: "answered",
   },
 ];
