@@ -47,8 +47,8 @@ const DetailedCall = (props) => {
             // src={direction === "outbound" ? outboundCall : inboundCall}
           />
           <div className="detail_call__info">
-            <span>11:08 AM</span>
-            <span>Missed call</span>
+            <span style={{ marginBottom: "2px" }}>11:08 AM</span>
+            <span style={{ color: "grey" }}>Missed call</span>
           </div>
         </Container>
         <DateHeader date="2018-04-18" />
@@ -59,8 +59,10 @@ const DetailedCall = (props) => {
             // src={direction === "outbound" ? outboundCall : inboundCall}
           />
           <div className="detail_call__info">
-            <span>11:08 AM</span>
-            <span>Missed call</span>
+            <span style={{ marginBottom: "2px" }}>11:08 AM</span>
+            <span>
+              <span style={{ color: "grey" }}>60 mins 0 secs</span>
+            </span>
           </div>
         </Container>
       </div>
