@@ -11,6 +11,7 @@ const Header = () => {
   return (
     <header>
       <img
+        className="logo"
         style={{
           width: "120px",
           height: "120px",
