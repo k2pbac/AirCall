@@ -1,6 +1,5 @@
 import "./css/body.css";
 import "./css/app.css";
-import "./css/header.css";
 require("babel-core/register");
 require("babel-polyfill");
 import React from "react";
