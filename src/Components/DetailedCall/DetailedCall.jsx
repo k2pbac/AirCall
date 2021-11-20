@@ -19,17 +19,48 @@ import Time from "../UI/Time/Time.jsx";
 
 import { format } from "date-fns";
 import { enCALocale } from "date-fns/locale/en-CA";
+
 import useHttp from "../../hooks/useHttp";
+import useArchiveRequest from "../../hooks/useArchiveRequest";
 
 const DetailedCall = (props) => {
   const { match } = props;
   const { error, isLoading, sendRequest } = useHttp();
+
   const [call, setCall] = useState({});
   const [dateTime, setDateTime] = useState({
     realDate: null,
     callDate: null,
     callTime: null,
   });
+  const requestConfig = {
+    url: `https://aircall-job.herokuapp.com/activities/${match.params.id}`,
+    method: "POST",
+    body: {
+      is_archived: !call.is_archived,
+    },
+  };
+  const { archiveItem, newLoading, setNewLoading, update, setUpdate } =
+    useArchiveRequest(sendRequest, requestConfig);
+
+  useEffect(() => {
+    if (update === true) {
+      setNewLoading(true);
+      const intervalId = setInterval(
+        () =>
+          setCall((prev) => {
+            setUpdate(false);
+            return { ...prev, is_archived: !prev.is_archived };
+          }),
+        0
+      );
+      return () => {
+        clearInterval(intervalId);
+        setNewLoading(false);
+        setUpdate(false);
+      };
+    }
+  }, [update]);
 
   useEffect(() => {
     if (Object.keys(call).length) {
@@ -58,30 +89,45 @@ const DetailedCall = (props) => {
   }, [match.params.id]);
 
   return (
-    (!isLoading && !error && Object.keys(call).length && (
+    (!isLoading && !error && Object.keys(call).length && !newLoading && (
       <div className="detailed_call">
         <img className="detailed_call__image" src={`/${imageIcon}`} />
+        <span
+          style={{
+            fontFamily: "Montserrat, sans-serif",
+            color: "grey",
+            display: `${call.is_archived ? "block" : "none"}`,
+          }}
+        >
+          {call.is_archived ? "Archived" : ""}
+        </span>
         <p>{call.to || "Private Number"}</p>
         <div className="detailed_call__icons">
           <FontAwesomeIcon
+            style={{ cursor: "pointer" }}
             size="2x"
             color="#1eb91e"
             icon={faPhoneAlt}
           ></FontAwesomeIcon>
           <FontAwesomeIcon
+            style={{ cursor: "pointer" }}
             color="#456cb3"
             size="2x"
             icon={faEnvelope}
           ></FontAwesomeIcon>
           <FontAwesomeIcon
+            style={{ cursor: "pointer" }}
             color="#5a5a5a"
             size="2x"
             icon={faArchive}
+            onClick={() => {
+              archiveItem();
+            }}
           ></FontAwesomeIcon>
         </div>
         <div className="detailed_call__items">
           <DateHeader date={dateTime.callDate} />
-          <Container>
+          <Container className={""}>
             <img
               className="call_item__icon-outbound"
               src={
@@ -103,7 +149,9 @@ const DetailedCall = (props) => {
           </Container>
         </div>
       </div>
-    )) || <Loader></Loader>
+    )) ||
+    (isLoading && <Loader></Loader>) ||
+    (!isLoading && !Object.keys(call).length && <p>No calls found</p>)
   );
 };
 
