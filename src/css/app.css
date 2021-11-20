@@ -24,3 +24,12 @@
   position: relative;
   overflow: auto;
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden;
+}
+body:hover {
+  overflow-y: scroll;
+}
