@@ -15,28 +15,19 @@ const Header = () => {
           width: "120px",
           height: "120px",
           position: "absolute",
-          top: "-25px",
+          top: "-18px",
           left: "0",
         }}
         src={activity}
       />
       <div style={{ display: "flex", height: "100%" }}>
-        <div
-          style={{
-            height: "90%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
+        <Link
+          onClick={() => setLinkSet(() => ({ link2: false, link1: true }))}
+          to="/"
+          className={` ${linkSet.link1 ? "header__icon-active" : ""}`}
         >
-          <Link
-            onClick={() => setLinkSet(() => ({ link2: false, link1: true }))}
-            to="/"
-            className={` ${linkSet.link1 ? "header__icon-active" : ""}`}
-          >
-            Inbox
-          </Link>
-        </div>
+          Inbox
+        </Link>
         <FontAwesomeIcon
           style={{ color: "#80808047" }}
           size="sm"
@@ -44,7 +35,7 @@ const Header = () => {
           icon={faEllipsisV}
         />
         <div
-          style={{ display: "flex", height: "90% !important" }}
+          style={{ display: "flex", height: "95%" }}
           className={`spaceBetween ${
             linkSet.link2 ? "header__icon-active" : ""
           }`}
@@ -64,7 +55,7 @@ const Header = () => {
         />
         <div
           style={{
-            height: "95% !important",
+            height: "95%",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
