@@ -32,7 +32,9 @@ const CallItem = (props) => {
     count,
     setCallData,
     is_archived,
+    isFullView,
   } = props;
+
   const [displayDrawer, setDisplayDrawer] = useState(false);
   const { isLoading, error, sendRequest } = useHttp();
   const requestConfig = {
@@ -52,7 +54,20 @@ const CallItem = (props) => {
       const intervalId = setInterval(
         () =>
           setCallData((prev) => {
-            const newObj = prev.filter((x) => x.props.id !== id);
+            let newObj;
+            if (isFullView) {
+              newObj = prev.map((x) => {
+                if (x.props.id === id) {
+                  const obj = x;
+                  obj.props.is_archived = !obj.props.is_archived;
+                  return obj;
+                } else {
+                  return x;
+                }
+              });
+            } else {
+              newObj = prev.filter((x) => x.props.id !== id);
+            }
             setUpdate(false);
             return newObj;
           }),
@@ -90,7 +105,20 @@ const CallItem = (props) => {
               displayDrawer ? "display_drawer" : "container_hide_drawer"
             }`}
           >
-            <div className="test">
+            <div
+              className="centered-container"
+              style={{ marginTop: `${is_archived ? "10px" : "0px"}` }}
+            >
+              <span
+                style={{
+                  display: `${
+                    is_archived ? "display: inline" : "display: none"
+                  }`,
+                }}
+                className="archived_text"
+              >
+                {is_archived ? "Archived" : ""}
+              </span>
               <div className="centered">
                 <img
                   className="call_item__icon-outbound"

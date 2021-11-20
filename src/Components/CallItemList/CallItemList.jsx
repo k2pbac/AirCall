@@ -35,7 +35,8 @@ const CallItemList = ({ callItemsData, setActiveTab, fullView }) => {
             call_type={newData[key].call.call_type}
             count={newData[key].count}
             setCallData={setCallData}
-            is_archived={newData[key].is_archived}
+            is_archived={newData[key].call.is_archived}
+            isFullView={fullView}
           />
         );
       } else if (fullView) {
@@ -52,7 +53,8 @@ const CallItemList = ({ callItemsData, setActiveTab, fullView }) => {
             call_type={newData[key].call.call_type}
             count={newData[key].count}
             setCallData={setCallData}
-            is_archived={newData[key].is_archived}
+            is_archived={newData[key].call.is_archived}
+            isFullView={fullView}
           />
         );
       }
