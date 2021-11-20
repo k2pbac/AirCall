@@ -1,7 +1,3 @@
-body {
-  overflow-x: hidden;
-}
-
 #app {
   position: absolute;
   display: flex;
@@ -26,5 +22,9 @@ body {
   padding: 20px;
   height: calc(100% - 160px);
   position: relative;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  display: flex;
+  justify-content: center;
 }

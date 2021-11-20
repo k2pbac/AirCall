@@ -1,6 +1,6 @@
 .CallItemList {
-  overflow-y: scroll;
-  overflow-x: hidden;
+  /* overflow-y: auto; */
+  /* overflow-x: hidden; */
   position: absolute;
   width: 376px;
 }
