@@ -8,7 +8,7 @@ import Loader from "../UI/Loader/Loader.jsx";
 const CallItemList = ({ callItemsData, setActiveTab }) => {
   const [callData, setCallData] = useState({});
   const { isLoading, error, sendRequest } = useHttp();
-
+  const [update, setUpdate] = useState(false);
   const countedSameCalls = (res) => {
     const newData = res.data.reduce((filtered, call) => {
       if (filtered[call.to + " " + call.from + " " + call.created_at]) {
@@ -35,6 +35,8 @@ const CallItemList = ({ callItemsData, setActiveTab }) => {
             duration={newData[key].call.duration}
             call_type={newData[key].call.call_type}
             count={newData[key].count}
+            setCallData={setCallData}
+            is_archived={newData[key].is_archived}
           />
         );
       }
@@ -42,7 +44,8 @@ const CallItemList = ({ callItemsData, setActiveTab }) => {
     }, []);
     setCallData(displayCallData);
   };
-  useEffect(() => {
+
+  const fetchCallData = () => {
     sendRequest(
       {
         url: "https://aircall-job.herokuapp.com/activities",
@@ -50,12 +53,19 @@ const CallItemList = ({ callItemsData, setActiveTab }) => {
       },
       countedSameCalls
     );
+  };
+  useEffect(() => {
+    fetchCallData();
   }, []);
 
   return (
     (!isLoading && !error && Object.keys(callData).length && (
       <div className="CallItemList">{callData}</div>
-    )) || <Loader></Loader>
+    )) ||
+    (isLoading && <Loader></Loader>) ||
+    (!isLoading && !Object.keys(callData).length && (
+      <p className="empty-calls">No calls found</p>
+    ))
   );
 };
 

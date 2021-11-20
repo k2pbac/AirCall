@@ -26,7 +26,7 @@
 .detailed_call p {
   font-weight: bold;
   font-size: 1.2rem;
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
 }
 
 .detailed_call__image {
