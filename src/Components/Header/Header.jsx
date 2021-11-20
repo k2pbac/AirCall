@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import "./Header.css";
 import activity from "../../../public/images/activity.png";
-import headerCurved from "../../../public/images/header-curved.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
