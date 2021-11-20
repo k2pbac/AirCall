@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import "./Header.css";
-import activity from "../../../public/images/activity.png";
+import activity from "../../../public/images/activity2.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
@@ -21,13 +21,22 @@ const Header = () => {
         src={activity}
       />
       <div style={{ display: "flex", height: "100%" }}>
-        <Link
-          onClick={() => setLinkSet(() => ({ link2: false, link1: true }))}
-          to="/"
-          className={` ${linkSet.link1 ? "header__icon-active" : ""}`}
+        <div
+          style={{
+            height: "90%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         >
-          Inbox
-        </Link>
+          <Link
+            onClick={() => setLinkSet(() => ({ link2: false, link1: true }))}
+            to="/"
+            className={` ${linkSet.link1 ? "header__icon-active" : ""}`}
+          >
+            Inbox
+          </Link>
+        </div>
         <FontAwesomeIcon
           style={{ color: "#80808047" }}
           size="sm"
@@ -35,7 +44,7 @@ const Header = () => {
           icon={faEllipsisV}
         />
         <div
-          style={{ display: "flex", height: "100%" }}
+          style={{ display: "flex", height: "90% !important" }}
           className={`spaceBetween ${
             linkSet.link2 ? "header__icon-active" : ""
           }`}
@@ -55,7 +64,7 @@ const Header = () => {
         />
         <div
           style={{
-            height: "100%",
+            height: "95% !important",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
