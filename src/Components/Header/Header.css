@@ -4,11 +4,12 @@ header {
   /* padding: 20px 0; */
   /* text-align: center; */
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-  height: 60px;
+  height: 40px;
   display: flex;
   justify-content: flex-end;
-  align-items: center;
-  padding: 10px;
+  align-items: flex-end;
+  padding: 20px;
+  padding-bottom: 0px;
 }
 
 header svg {
@@ -19,12 +20,26 @@ header svg {
 
 header .spaceBetween {
   margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 header a {
   font-size: 0.9rem;
   text-decoration: none;
   color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .bold-text {
@@ -33,4 +48,11 @@ header a {
 
 .muted-text {
   font-weight: lighter;
+}
+
+.header__icon-active {
+  border-bottom: 3px solid #1eb91e;
+  /* border-radius: 0;
+  border-top-left-radius: 30%;
+  border-top-right-radius: 30%; */
 }

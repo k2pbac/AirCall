@@ -5,10 +5,9 @@ import "./CallItemList.css";
 import useHttp from "../../hooks/useHttp";
 import Loader from "../UI/Loader/Loader.jsx";
 
-const CallItemList = ({ callItemsData, setActiveTab }) => {
+const CallItemList = ({ callItemsData, setActiveTab, fullView }) => {
   const [callData, setCallData] = useState({});
   const { isLoading, error, sendRequest } = useHttp();
-  const [update, setUpdate] = useState(false);
   const countedSameCalls = (res) => {
     const newData = res.data.reduce((filtered, call) => {
       if (filtered[call.to + " " + call.from + " " + call.created_at]) {
@@ -22,7 +21,24 @@ const CallItemList = ({ callItemsData, setActiveTab }) => {
       return filtered;
     }, {});
     const displayCallData = Object.keys(newData).reduce((filtered, key) => {
-      if (!newData[key].call.is_archived) {
+      if (!newData[key].call.is_archived && !fullView) {
+        filtered.push(
+          <CallItem
+            id={newData[key].call.id}
+            key={newData[key].call.id}
+            created_at={newData[key].call.created_at}
+            direction={newData[key].call.direction}
+            from={newData[key].call.from}
+            to={newData[key].call.to}
+            via={newData[key].call.via}
+            duration={newData[key].call.duration}
+            call_type={newData[key].call.call_type}
+            count={newData[key].count}
+            setCallData={setCallData}
+            is_archived={newData[key].is_archived}
+          />
+        );
+      } else if (fullView) {
         filtered.push(
           <CallItem
             id={newData[key].call.id}

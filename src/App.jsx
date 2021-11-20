@@ -26,6 +26,12 @@ const App = () => {
             path="/call/:id"
             render={(props) => <DetailedCall {...props}></DetailedCall>}
           />
+          <Route
+            path="/calls"
+            component={() => {
+              return <CallItemList fullView={true} />;
+            }}
+          />
           <Route component={Error} />
         </Switch>
       </div>
