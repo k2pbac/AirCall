@@ -21,11 +21,11 @@
 }
 
 .date_header::before {
-  left: calc(50% + 35px);
+  left: calc(50% + 45px);
 }
 
 .date_header::after {
-  right: calc(50% + 35px);
+  right: calc(50% + 45px);
 }
 
 .date_header span {

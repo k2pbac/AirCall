@@ -3,6 +3,50 @@
   margin-bottom: 10px;
 }
 
+.call_item .call_item__container {
+  flex-direction: column;
+}
+
+.call_item .centered {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.call_item .drawer {
+  height: 30px;
+  width: 100%;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.call_item .drawer p {
+  font-size: 0.6rem;
+}
+
+.call_item .centered {
+  height: 50px;
+}
+
+.drawer .icons {
+  width: 70%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+}
+
+.drawer .icons svg {
+  height: 20px;
+  width: 20px;
+}
+
 .call_item a,
 a:visited,
 a:hover,
@@ -11,7 +55,7 @@ a:active {
   text-decoration: none;
 }
 
-.call_item:o .call_item_light-span {
+.call_item .call_item_light-span {
   font-weight: 300;
 }
 
@@ -25,7 +69,6 @@ a:active {
 
 .call_item__details p {
   margin: 0;
-  margin-top: 2px;
 }
 
 .call_item__details p:nth-child(1) {
@@ -41,6 +84,7 @@ a:active {
   height: 27px;
   width: 25px;
   margin-right: 10px;
+  margin-left: 10px;
 }
 
 .call_item__badge {
@@ -61,4 +105,28 @@ a:active {
   text-align: center;
   background: rgb(243, 27, 27);
   color: #fefefe;
+}
+
+.test {
+  width: 100%;
+  height: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 15px;
+}
+
+.test:active {
+  background-color: aliceblue;
+}
+
+.test:hover {
+  cursor: pointer;
+}
+
+.show_drawer {
+  display: block !important;
+}
+
+.hide_drawer {
+  display: none !important;
 }
