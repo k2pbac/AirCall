@@ -8,7 +8,7 @@ import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const [linkSet, setLinkSet] = useState({ link1: false, link2: false });
+  const [linkSet, setLinkSet] = useState({ link1: true, link2: false });
   return (
     <header>
       <img
